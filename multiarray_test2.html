@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다차원배열</title>
+</head>
+<body>
+    
+    <div class="display_table"></div>
+
+    <script>
+        let arr = [ ['어제', '오늘', '내일'], ['우리', '경래', '지호'], ['는', '에게', '가'], ['신발을', '가방을', '핸드폰을'], ];
+
+        // 새로운 2차원 배열을 생성
+        let arr_new = Array.from(Array(3),() => new Array(4));
+        for(let i=0;i<arr_new.length;i++){
+            for(let j=0;j<arr_new[0].length;j++){
+                arr_new[i][j] = arr[j][i];
+            }
+        }
+        console.log(arr_new);
+
+        // 새로운 2차원 배열을 table로 출력
+        function display(){
+            let display = document.querySelector(".display_table");
+            let tb = "<table border='1'>";
+            for(let i=0;i<arr_new.length;i++){
+                tb += "<tr>";
+                for(let j=0;j<arr_new[0].length;j++){
+                    tb += "<td>" + arr_new[i][j] + "</td>";
+                }
+                tb += "</tr>";
+            }
+            tb += "</table>";
+            display.innerHTML = tb;
+        }
+        display();
+    </script>
+</body>
+</html>

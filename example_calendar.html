@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>달력</title>
+    <link rel="stylesheet" href="example_calendar.css">
+</head>
+<body>
+    <div class="container_wrap">
+        <div class="container">
+            <p>
+                <span class="left"><</span>
+                <span class="yearMonth_display"></span>
+                <span class="right">></span>
+            </p>
+            <table class="week">
+                <tr>
+                    <td class="sun">SUN</td>
+                    <td>MON</td>
+                    <td>TUE</td>
+                    <td>WED</td>
+                    <td>THU</td>
+                    <td>FRI</td>
+                    <td>SAT</td>
+                </tr>
+            </table>
+            <table class="week_display"></table>
+        </div>
+    </div>
+
+    <script>
+        // 문제: 오늘 날짜에 해당하는 td만 classList.add('todayDate')로 지정하여 별도의 css를 줄 것 
+        let today = new Date();
+        let thisYear = today.getFullYear();
+        let thisMonth = today.getMonth();
+        let firstDayOfWeek = new Date(thisYear,thisMonth,1).getDay();
+        let lastDay = new Date(thisYear,thisMonth+1,0).getDate();
+        let leftButton = document.querySelector(".left");
+        let rightButton = document.querySelector(".right");
+
+        // 요일을 입력할 2차원 배열을 생성
+        let arr = Array.from(Array(6),() => new Array(7));
+        for(let i=0;i<arr.length;i++){
+            for(let j=0;j<arr[0].length;j++){
+                arr[i][j] = "";
+            }
+        }
+        // 현재 일자에 맞게 배열에 값을 입력
+        input();
+        // 입력한 값을 출력
+        print();
+        // 오늘에 해당하는 날짜가 있으면 강조 표시
+        todayCheck();
+
+        // 왼쪽 버튼을 클릭할 경우
+        leftButton.addEventListener("click", () => {
+            // 배열 초기화
+            thisMonth--;
+            if(thisMonth < 0){
+                thisMonth = 11;
+                thisYear--;
+            }
+            firstDayOfWeek = new Date(thisYear,thisMonth,1).getDay();
+            lastDay = new Date(thisYear,thisMonth+1,0).getDate();
+            for(let i=0;i<arr.length;i++){
+                for(let j=0;j<arr[0].length;j++){
+                    arr[i][j] = "";
+                }
+            }
+            // 배열에 값 다시 입력
+            input();
+            // 입력한 값을 출력
+            print();
+            // 오늘에 해당하는 날짜가 있으면 강조 표시
+            todayCheck();
+        })
+
+        // 오른쪽 버튼을 클릭할 경우
+        rightButton.addEventListener("click", () => {
+            // 배열 초기화
+            thisMonth++;
+            if(thisMonth > 11){
+                thisMonth = 0;
+                thisYear++;
+            }
+            firstDayOfWeek = new Date(thisYear,thisMonth,1).getDay();
+            lastDay = new Date(thisYear,thisMonth+1,0).getDate();
+            for(let i=0;i<arr.length;i++){
+                for(let j=0;j<arr[0].length;j++){
+                    arr[i][j] = "";
+                }
+            }
+            // 배열에 값 다시 입력
+            input();
+            // 입력한 값을 출력
+            print();
+            // 오늘에 해당하는 날짜가 있으면 강조 표시
+            todayCheck();
+        })
+
+        function input(){
+            let i = 0;
+            let j = firstDayOfWeek;
+            for (let a = 1; a <= lastDay; a++) {
+                arr[i][j] = a;
+                if (j === 6) {
+                    i++;
+                    j = 0;
+                }
+                else {
+                    j++;
+                }
+            }
+        }
+
+        function print(){
+            let yearMonth_display = document.querySelector(".yearMonth_display");
+            document.querySelector(".yearMonth_display").innerHTML = `${thisYear}년 ${thisMonth+1}월`;
+            let week_display = document.querySelector(".week_display");
+            let tb = "<table border='1'>";
+            for (let i = 0; i < arr.length; i++) {
+                tb += "<tr>";
+                for (let j = 0; j < arr[0].length; j++) {
+                    tb += "<td>" + arr[i][j] + "</td>";
+                }
+                tb += "</tr>";
+            }
+            tb += "</table>";
+            week_display.innerHTML = tb;
+        }
+
+        function todayCheck(){
+            let days = document.querySelectorAll(".week_display tr td")
+            if(thisYear === today.getFullYear()
+            && thisMonth === today.getMonth()){
+                for(let i = 0; i < days.length; i++){
+                    if(days[i].innerHTML === today.getDate().toString()){
+                        days[i].classList.add('today');
+                    }
+                }    
+            }
+        }
+    </script>
+</body>
+</html>

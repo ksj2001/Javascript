@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main{
+            width: 700px;
+            height: 350px;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 10px;
+        
+        }
+        .detail{
+            width: 300px;
+            height: 350px;
+            margin-left: -20px;
+        }
+        .detail button{
+            width: 200px;
+            height: 30px;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
+        .mainSmall img{
+            width: 110px;
+            height: 120px;
+            /* border: 1px solid red; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title"><h1>에티오피아 게뎁</h1></div>
+        <div class="main">
+            <div class="img"><img src="images/coffee-pink.jpg" alt="" class="bigImg"></div>
+            <div class="detail">
+                <p>상품명: 에티오피아 게뎁</p>
+                <p>판매가: 9,000원</p>
+                <p>배송비: 3,000원</p>
+                <p>(50,000원 이상 구매 시 무료)</p>
+                <p>적립금: 180원(2%)</p>
+                <p>로스팅: 2019.06.17</p>
+                <button><a href="#">장바구니 담기</a></button>
+            </div>
+        </div>
+        <div class="mainSmall">
+            <img src="images/coffee-pink.jpg" alt="" class="smallImg">
+            <img src="images/coffee-gray.jpg" alt="" class="smallImg">
+            <img src="images/coffee-blue.jpg" alt="" class="smallImg">
+        </div>
+    </div>
+    <script>
+        let bigImg = document.querySelector(".img  .bigImg");
+        // querySelectorAll은 선택자의 모든 document를 배열로 저장한다.
+        let smallImg = document.querySelectorAll(".smallImg");
+     
+        for(let i=0;i<smallImg.length;i++){
+            smallImg[i].addEventListener("mouseover",function(){   
+                let newImg = this.src; 
+                // console.log(newImg);
+                bigImg.setAttribute("src",newImg);
+            });
+        }
+
+    </script>
+</body>
+</html>

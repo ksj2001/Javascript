@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규 표현식</title>
+</head>
+<body>
+    <script>
+        // 정규 표현식의 시작과 끝은 슬래시(/). 리터럴 정규표현 방식: 패턴을 변수에 직접 입력하는 것
+        const regular = /apple$/img;
+        // test 메서드는 값이 존재하면 true, 존재하지 않으면 false로 출력
+        // img는 플러그로, i는 대소문자 무시, m은 줄 개행 시에도 검색, g는 모든 패턴을 검색한다.
+        // ^:문장을 시작, $:문장으로 끝남, [abc]:a or b or c, [^abc]:a,b,c를 제외한 나머지, |:or
+        const test = regular.test("strawberry\nbanana\nApple");
+        document.write(test+"<br>");
+
+        const text = "strawberry\nbanana\nApple";
+        const test02 = text.match(regular);
+        document.write(test02+"<br>");
+
+        const test03 = text.replace(regular,"watermelon");
+        document.write(test03+"<br>");
+
+        const test01 = "Hello World and\nPower Hello?\nPower Overwhelming!!";
+        const display = /^Power*?/img;
+        document.write(display.test(test01));
+
+
+
+        
+
+    </script>
+</body>
+</html>

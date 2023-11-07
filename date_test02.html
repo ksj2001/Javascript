@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 객체</title>
+</head>
+<body>
+    <h3>Date 객체로 현재 시간 알아내기</h3>
+    <hr>
+    <script>
+        let now = new Date();
+        let weekString = ['일','월','화','수','목','금','토'];
+        document.write(now.getFullYear() + '년도<br>');
+        document.write(now.getMonth() + '월<br>');
+        document.write(now.getDate() + '일<br>');
+        let week = now.getDay();
+        for(let i=0;i<weekString.length;i++){
+            if(week === i){
+                document.write(weekString[i] + '요일<br>');
+            }
+        }
+        document.write(now.getHours() + '시<br>');
+        document.write(now.getMinutes() + '분<br>');
+        document.write(now.getSeconds() + '초<br>');
+        document.write(now.getMilliseconds() + '밀리초<br><hr>');
+        document.write(`toLocalDateString : ${now.toLocaleDateString()} <br>`);
+        document.write(`toLocalTimeString : ${now.toLocaleTimeString()} <br><hr>`);
+        let startDate = new Date(2023,8,1);
+        document.write(`시작일자 : ${startDate} <br>`);
+        document.write(`시작일의 요일 : ${startDate.getDay()} <br>`);
+        let lastDate = new Date(2023,9,0);
+        document.write(`마지막일자 : ${lastDate.toLocaleDateString()} <br>`);
+        document.write(`마지막일 : ${lastDate.getDate()} <br>`);
+        let previousDate = new Date(2023,8,-1);
+        document.write(`이틀전 일자 : ${previousDate.toLocaleDateString()} <br>`);
+    </script>
+</body>
+</html>

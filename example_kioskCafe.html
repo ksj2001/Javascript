@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카페 키오스크</title>
+    <link rel="stylesheet" href="kioskCafe.css">
+    <link rel="stylesheet" href="reset.css">
+    <script src="https://kit.fontawesome.com/82fd850f0d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="modal">
+        <div class="modal_content">
+            <div class="photo">
+                <img src="images/cardImg.png" alt="card">
+            </div>
+            <div class="contents">
+                <p>
+                    결제가 완료되었습니다.<br>
+                    카드를 뽑아주세요.
+                </p>
+                <button type="button" class="btn-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="orderMenu">
+            <p>
+                원하시는 음료를 선택해주세요<br>
+                <span>Please choose the drink you want.</span>
+            </p>
+            <div class="section01">
+                <h2>MENU</h2>
+                <div class="menuBox"></div>
+            </div>
+        </div>
+        <div class="orderList">
+            <h2>주문내역</h2>
+            <div class="section02"></div>
+        </div>
+        <div class="orderResult">
+            <div class="orderResultPosition">
+                총 주문금액:&nbsp;
+                <div class="moneyTotal">0</div>원
+                <span>&boxv;</span>
+                <button type="button" class="btn">카드결제</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 배열과 object를 이용한 menuBox 만들기
+        let menuBox = document.querySelector(".menuBox");
+        let menus = [
+            {num:0,name:'아메리카노',type:'HOT',price:1000},
+            {num:1,name:'아메리카노',type:'ICE',price:1300},
+            {num:2,name:'바닐라라떼',type:'HOT',price:2500},
+            {num:3,name:'바닐라라떼',type:'ICE',price:2800},
+            {num:4,name:'연유라떼',type:'HOT',price:2500},
+            {num:5,name:'연유라떼',type:'ICE',price:2800},
+            {num:6,name:'카라멜마끼아또',type:'HOT',price:2800},
+            {num:7,name:'카라멜마끼아또',type:'ICE',price:3000},
+            {num:8,name:'카페모카',type:'HOT',price:3000},
+            {num:9,name:'카페모카',type:'ICE',price:3300},
+            {num:10,name:'딸기쉐이크',type:'ICE',price:3700}
+        ]
+        let menuList = '<ul>';
+        for(let i=0;i<menus.length;i++){
+            if(menus[i].type === 'HOT'){
+                menuList += '<li class="hot">';
+            }
+            else{
+                menuList += '<li class="ice">';
+            }
+            menuList += `<i></i><span>${menus[i].name}</span><strong>${menus[i].type}</strong><em>${menus[i].price}</em></li>`; 
+        }
+        menuList += '</ul>';
+        menuBox.innerHTML = menuList;
+
+        let section02 = document.querySelector(".section02");
+        let menuBoxList = document.querySelectorAll(".menuBox ul li");
+        let menuBoxListName = document.querySelectorAll(".menuBox ul li span");
+        let menuBoxListType = document.querySelectorAll(".menuBox ul li strong");
+        let orders = document.querySelectorAll(".section02 div");
+        let ordersName = document.querySelectorAll(".section02 div p span");
+        let ordersType = document.querySelectorAll(".section02 div p strong");
+        let orderedList = '';
+        let orderArray = [];
+        // 각 상품별 cnt를 0으로 설정함
+        for(let i=0;i<menus.length;i++){
+            orderArray.push({num:i,cnt:0});
+        }
+        // let orderBox = document.querySelectorAll(".orderList .section02 .orderBox");
+        let orderlist = document.querySelector('.orderList');
+        let orderBox = orderlist.getElementsByClassName('orderBox');
+
+        for(let i=0;i<menuBoxList.length;i++){
+            menuBoxList[i].addEventListener("click", () => {
+                orders = document.querySelectorAll(".section02 div");
+                ordersName = document.querySelectorAll(".section02 div p span");
+                ordersType = document.querySelectorAll(".section02 div p strong");
+                let check = 0;
+                for(let j=0;j<orders.length;j++){
+                    if(menuBoxListName[i].innerHTML===ordersName[j].innerHTML && menuBoxListType[i].innerHTML===ordersType[j].innerHTML){
+                        check = -1;
+                    }
+                }
+                // console.log(check);
+                if(check===-1){
+                    alert('이미 선택한 메뉴입니다.');
+                }
+                else{
+                    if(orderArray[i].cnt<1){
+                        orderArray[i].cnt++;
+                        section02.innerHTML += `<div class = "orderBox" id = "orderBox${i}">
+                        <p>
+                            <span>${menus[i].name}</span>
+                            (<strong>${menus[i].type}</strong>)
+                            <i id = "cnt${i}">${orderArray[i].cnt}</i>개,&nbsp;&nbsp;
+                            <em id = "price${i}">${menus[i].price.toLocaleString(menus[i].price)}</em>원
+                        </p><br>
+                        <button type="button" onclick= "addSub(${i},false);">빼기</button>
+                        <button type="button" onclick= "addSub(${i},true);">더하기</button>
+                        <button type="button" onclick="cancel(${i})">취소</button>
+                    </div>`; 
+                    }
+                    result();
+                }
+            })
+        }
+
+        // 카드결제 버튼을 누를 경우 modal 창 출력
+        let purchaseButton = document.querySelector(".orderResultPosition .btn");
+        let closeButton = document.querySelector(".btn-close");
+        let modal = document.querySelector(".modal");
+
+        purchaseButton.addEventListener("click", () => {
+            modal.classList.add('on');
+        })
+        closeButton.addEventListener("click", () => {
+            modal.classList.remove('on');
+        })
+        // ************************************
+        
+        function addSub(num,isBool){
+            if(isBool===true){
+                orderArray[num].cnt++;
+            }
+            else{
+                if(orderArray[num].cnt>1){
+                    orderArray[num].cnt--;
+                }
+            }
+            let totalPrice = orderArray[num].cnt*menus[num].price;
+            document.getElementById("cnt"+num).innerHTML = orderArray[num].cnt;
+            // toLocaleString() : 천 단위마다 콤마(,)를 찍는 메서드
+            document.getElementById("price"+num).innerHTML = totalPrice.toLocaleString(totalPrice);
+            result();
+        }
+
+        // 취소 버튼을 누를 경우
+        function cancel(num){
+            let orderbox = document.getElementById(`orderBox${num}`);
+            orderbox.parentNode.removeChild(orderbox);
+            orderArray[num].cnt = 0;
+            result();
+        }
+       
+        function result(){
+            let total = document.querySelector(".moneyTotal");
+            let sum = 0;
+            for(let i=0;i<orderArray.length;i++){
+                sum += orderArray[i].cnt*menus[i].price;
+            }
+            total.innerHTML = sum.toLocaleString(sum);
+        }
+
+    </script>
+</body>
+</html>

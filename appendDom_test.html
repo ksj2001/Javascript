@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 추가</title>
+</head>
+<body>
+    <a href="javascript:add()">a태그 텍스트 보여주기</a>
+    <a href="javascript:remove()">a태그 텍스트 사라지기</a>
+    
+    <script>
+        // createElement 메서드는 body에 태그를 생성한다.
+        // createTextNode 메서드는 element에 text를 생성한다.
+        // appendChild 메서드는 부모에 자식요소로 추가한다.
+        // removeChild 메서드는 객체를 삭제한다.
+        function add(){
+            let tables = document.createElement('table');
+            // table의 id의 이름을 target으로 지정
+            tables.setAttribute('id','target');
+            let trs = document.createElement('tr');
+            let tds = document.createElement('td');
+            let text = document.createTextNode("지금은 공부 중입니다.");
+            tables.appendChild(trs).appendChild(tds).appendChild(text);
+            // table 태그를 body의 자식 노드로 추가한다.
+            document.body.appendChild(tables);
+        }
+
+        function remove(){
+            let target = document.querySelector("#target");
+            // 삭제하는 대상의 부모 노드에서 삭제해야 함
+            target.parentNode.removeChild(target);
+        }
+    </script>
+</body>
+</html>

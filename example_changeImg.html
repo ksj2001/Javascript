@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <img id="img" src="images/girl.png" alt="" onmouseover="changeimg();">
+    </div>
+
+    <script>
+        var img = document.querySelector("#img");
+        var changeimg1 = img.src;
+        
+        img.onmouseout = () => {
+            img.setAttribute("src",changeimg1);
+        }
+        console.log(changeimg1);
+
+        function changeimg() {
+            // setAttribute는 document들의 속성을 변경하는 메서드
+            img.setAttribute("src","images/boy.png");
+        }
+    </script>
+</body>
+</html>

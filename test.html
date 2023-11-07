@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 연습</title>
+
+</head>
+<body>
+    <!-- <button type="button"   onclick="changecolor()" >배경색 변경</button>
+    <div id="changecolor" width="30px" height="30px">배경색</div>
+
+    <input type="text" id="consoletext">
+    <button type="button" onclick="consoleprint()">click</button>
+
+    <script>
+       function consoleprint(){
+        let element1 = document.querySelector("#consoletext").value;
+        console.log(element1)
+       }
+
+      function changecolor(){
+        var element = document.querySelector("#changecolor");
+        element.style.backgroundColor = "gray";
+        element.style.color = "white";
+      } 
+    </script>-->
+
+    <script>
+      test();
+          function test() {
+            console.log("Hello");
+      }
+      test();
+      
+      // test2();
+      // let test2 = function() {console.log("Bye");}
+      // 화살표 함수 작성 방법
+      let test2 = () => {console.log("Bye");}
+      test2();
+      let sum = (a,b) => {return a+b;}
+      // console.log(sum(5,2));
+      // alert (sum(5,2));
+
+      // greeting(sayHello,"Javascript");
+      function sayHello() {return "Hello ";}
+      function greeting(helloMessage,name) {
+        console.log(helloMessage()+name);
+      }
+      greeting(sayHello,"Javascript");
+ 
+      const minus = function (a=1,b=2){ //익명함수 
+      const num1 = 2;
+      const num2 = 1;
+      document.write(num1+num2);
+      document.write("<br />");
+      document.write(a+b);
+     };
+     minus(5,7);
+
+    </script>
+   
+     
+  
+</body>
+</html>

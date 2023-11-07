@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function 연습</title>
+</head>
+<body>
+    <script>
+        const friends = [
+            { name: '양주진', age: 32, job: '코인러', married: false, },
+            { name: '오영제', age: 32, job: '랩퍼', married: false, },
+            { name: '서준형', age: 32, job: '2년차 유부남', married: true, }
+        ];
+        let notMarried = (currentMarried) => {return currentMarried.married === false;}
+        console.log(friends.filter(notMarried));
+    </script>
+</body>
+</html>

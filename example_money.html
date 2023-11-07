@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>음료수 자판기</h2>
+        <hr>
+        <div class="aProduct">A음료수 : 500원</div>
+        <div class="bProduct">B음료수 : 700원</div>
+        <div class="cProduct">C음료수 : 1000원</div>
+        <div class="money">돈 넣기
+            <button type="button">100</button>
+            <button type="button">500</button>
+            <button type="button">1000</button>
+        </div>
+    </div>
+
+    <script>
+        let buttons = document.querySelectorAll(".money button");
+
+        // for(let i=0;i<buttons.length;i++){
+        //     buttons[i].addEventListener("click", () => {
+        //         let money = buttons[i].innerText;
+        //         if(money < 500){
+        //             alert("선택 가능한 음료수가 없습니다.");
+        //         }
+        //         else if(money < 700){
+        //             alert("A음료수만 선택 가능");
+        //         }
+        //         else if(money < 1000){
+        //             alert("A음료수,B음료수 선택 가능");
+        //         }
+        //         else{
+        //             alert("모든음료수 선택 가능");
+        //         }
+        //     })
+        // }
+
+        for(let btn of buttons){
+            btn.addEventListener("click", () => {
+                let money = btn.innerText;
+                if(money < 500){
+                    alert("선택 가능한 음료수가 없습니다.");
+                }
+                else if(money < 700){
+                    alert("A음료수만 선택 가능");
+                }
+                else if(money < 1000){
+                    alert("A음료수,B음료수 선택 가능");
+                }
+                else{
+                    alert("모든음료수 선택 가능");
+                }
+            })
+        }
+    </script>
+</body>
+</html>

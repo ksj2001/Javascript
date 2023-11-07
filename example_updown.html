@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .container{
+            width: 300px;
+            height: 400px;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .header,.trial{
+            width: 300px;
+            height: 35px;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 3px;
+            color: white;
+            background-color: black;
+        }
+        .text{
+            width: 300px;
+            height: 30px;
+            font-size: 14px;
+            line-height: 3em;
+        }
+        .section{
+            width: 300px;
+            height: 150px;
+            padding-top: 80px;
+        }
+        .section input{
+            width: 100px;
+            height: 30px;
+        }
+        .section button{
+            width: 50px;
+            height: 30px;
+        }
+        .result{
+            width: 300px;
+            height: 150px;
+            padding-top: 40px;
+            font-size: 32px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">숫자 맞추기 게임</div>
+        <div class="text">1에서 100 사이의 수를 입력하세요</div>
+        <div class="section">
+            <input type="text">
+            <button type="button">확인</button>
+        </div>
+        <div class="result"></div>
+        <div class="trial"></div>
+    </div>
+
+    <script>
+        let computerNum = Math.floor(Math.random()*100)+1;
+        let user = document.querySelector(".section input");
+        let button = document.querySelector(".section button");
+        let result = document.querySelector(".result");
+        let trial = document.querySelector(".trial");
+        let count = 0;
+
+        button.addEventListener("click", () => {
+            console.log(computerNum);
+            let userNum = parseInt(user.value);
+            count++;
+            if(computerNum === userNum){
+                result.innerHTML = "Bingo!";
+            }
+            else if(computerNum > userNum){
+                result.innerHTML = "Up!";
+            }
+            else{
+                result.innerHTML = "Down!";
+            }
+            trial.innerHTML = `시도 횟수 : ${count}회`;
+        })
+    </script>
+</body>
+</html>

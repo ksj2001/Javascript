@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String 테스트</title>
+</head>
+<body>
+    <h2>String 객체의 메소드 활용</h2>
+    <hr>
+    <script>
+        var a = new String("Boys and Girls");
+        var b = "!!";
+        document.write("a : " + a + "<br>");
+        document.write("b : " + b + "<br><hr>");
+        document.write(a.charAt(0)+"<br>");
+        document.write(a.concat(b)+"입니다"+"<br>");
+        document.write(a.indexOf('s')+"<br>");
+        document.write(a.indexOf('And')+"<br>");
+        // 존재하지 않는 값은 -1로 출력된다.
+        document.write(a.slice(5,8)+"<br>");
+        // slice는 시작부터 종료 index 앞까지 추출
+        document.write(a.substr(5,3)+"<br>");
+        // substr은 시작부터 길이만큼 추출
+        document.write(a.toUpperCase()+"<br>");
+        document.write(a.replace("and","or"));
+        document.write("   kitae   ".trim()+"<br><hr>");
+        var sub = a.split(" ");
+        // 공백을 구분으로 배열이 생성된다.
+        for(let i=0;i<sub.length;i++){
+            document.write(`sub ${i} = ${sub[i]} <br>`);
+        }
+
+        document.write("a : " + a + "<br>");
+        document.write("b : " + b + "<br><hr>");
+        document.write(a.search('Girls') + "<br><hr>");
+        // search는 대소문자를 구분하며, 존재하지 않는 값은 -1로 출력한다.
+        // search는 찾는 문자열의 첫 번째 문자의 index를 출력한다.
+        document.write(a.match('girls') + "<br><hr>");
+        // 존재하지 않는 값은 null이 출력되고, 존재하는 값은 찾는 문자 그대로 출력된다.
+    </script>
+</body>
+</html>

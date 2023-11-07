@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="galleryZone">
+        <div><img src="images/pic_1.jpg" id='photo' alt=""></div>
+        <div class="btn">
+            <button type="button">이전</button>
+            <button type="button">다음</button>
+        </div>
+    </div>
+    <script>
+        let imgNum = 1;
+        let img = document.querySelector("#photo");
+        let btn = document.querySelectorAll(".btn button");
+
+        for(let i=0;i<btn.length;i++){
+            btn[i].addEventListener("click",() => {   
+                if(i===1){
+                    if(imgNum===8) return;
+                    imgNum++;
+                    console.log("다음"+i);
+                }
+                else{
+                    if(imgNum===1) return;
+                    imgNum--;
+                    console.log("이전"+i);
+                }
+                img.setAttribute('src',`images/pic_${imgNum}.jpg`);
+            });
+        }
+
+    </script>
+</body>
+</html>

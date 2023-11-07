@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코어 객체 연습</title>
+</head>
+<body>
+    <h1>Book 객체</h1>
+     <hr> 
+    <div id="bookprint"></div>
+    <script>
+        // let a = 50;
+        // let b = 50;
+        // a = 60;
+        // console.log(a,b);
+        // let obj1 = {name:'tom',age:25};
+        // let obj2 = obj1;
+        // let arr = [50,60];
+        // let arr2 = arr;
+        // arr[0] = 100;
+        // obj1.age = 30;
+        // console.log(obj1,obj2);
+        // console.log(arr,arr2);
+
+        // let book ={ title:'JavaScript', author:'홍길동', page:500, price:15000 
+        //             , info:function(){
+        //                 alert(`이 책의 이름은${this.title}이다. `);
+        //             }};
+        // book.info();            
+        // let bookView = document.querySelector("#bookprint");
+        // bookView.innerText= `이 책의 저자는 ${book.author}이며, 총 책의 페이지 수는 ${book.page}페이지이다.`
+
+
+        let today = new Date(); // 오늘 날짜를 출력하는 Date 객체 생성 방법
+        let today_2 = new Date(86400000);
+        let today_3 = new Date('2023/09/10/15:00:00');
+        let today_4 = new Date(2023,8); // 0~11 : 0부터 1월이 시작된다. 일 부분에 값이 없으면 무조건 1일이 출력된다.
+        let last_day = new Date(2023,9,0); // 당해 현재 월의 마지막 일을 알고 싶으면 일에 0을 입력하고 현재 월에 1을 더해주면 된다.
+        let today_5 = Date(); // 오늘 날짜를 문자(String)로 출력한다.
+        console.log(today);
+        console.log(today_2);   
+        console.log(today_3);
+        console.log(today_4);
+        console.log(typeof today_5);
+        console.log(last_day);
+
+
+        // Date의 메서드 사용
+        let now = Date.now();
+        console.log(Math.floor(now/86400000/365));//1695707747374 =>
+        let num = Date.parse('2000/1/1/00:00:00');
+        console.log(num);
+        console.log('--------------');
+
+        let year = today.getFullYear();
+
+        today.setFullYear(2000);
+        let yearSet = today.getFullYear();
+
+        let month = today.getMonth();
+        let day = today.getDate(); //일
+        let weekDay = today.getDay(); //요일(0~6: 일요일부터 토요일까지)
+        let hour = today.getHours();
+        let minute = today.getMinutes();
+        let second = today.getSeconds();
+        let ms = today.getMilliseconds();
+        let time = today.getTime()
+        console.log(year);   
+        console.log(month);   
+        console.log(day);   
+        console.log(weekDay);   
+        console.log(hour);   
+        console.log(minute);   
+        console.log(second);   
+        console.log(ms); 
+        console.log(yearSet); 
+        console.log(time); 
+        console.log(today.toDateString()); 
+        console.log(today.toTimeString()); 
+        console.log(typeof today.toLocaleString()); 
+        // setTimeout은 원하는 작업을 지연시간 뒤에 실행시키는 함수이다.
+        // 단, 지연시간은 반드시 밀리초로 계산한다.
+        console.log(setTimeout(alert('1초 뒤 보기'),1000));
+    </script>
+</body>
+</html>

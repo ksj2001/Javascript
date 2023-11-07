@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교환 기한 검사</title>
+</head>
+<body>
+    구입날짜:
+    <input type="date" id="pdate">
+    <button onclick="checkDate()">검사</button>
+
+    <script>
+        let today = new Date();
+        let todayTime = today.getTime();
+        
+        function checkDate(){
+            let check = document.querySelector("#pdate").value;
+            let checkTime = Date.parse(check);
+            let timeInterval = Math.floor((todayTime-checkTime)/86400000);
+            console.log(timeInterval);
+            if(timeInterval>=30){
+                alert('교환 기환이 지났습니다.');
+            }
+        }
+    </script>
+</body>
+</html>

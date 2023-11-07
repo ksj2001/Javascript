@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 추가</title>
+    <style>
+        .blue{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <span>난 span태그야.</span>
+    </h1>
+    <script>
+        // h1 태그에 자식 태그로 p 태그를 생성
+        // p 태그에 className을 blue로 지정
+        // p 태그의 text는 "난 js에서 만든 태그야."
+        // className을 지정하는 메서드는 classList.add() 메서드를 이용할 것
+        let h1 = document.querySelector('h1');
+        let ps = document.createElement('p');
+        let text = document.createTextNode("난 js에서 만든 태그야.");
+        ps.classList.add('blue');
+        h1.appendChild(ps).appendChild(text);
+    </script>
+</body>
+</html>

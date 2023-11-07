@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .container{
+            width: 504px;
+            height: 350px;
+        }
+        .subContainer{
+            display: flex;
+            width: 504px;
+            height: 200px;
+        }
+        .img{
+            width: 154px;
+            height: 160px;
+        }
+        .sale{
+            text-align: right;
+            width: 350px;
+            height: 200px;
+            /* border: 1px solid red; */
+            padding: 10px;
+        }
+        .sale ul li{
+            list-style: none;
+            line-height: 2em;
+        }
+        .sale ul li button{
+            margin-right: 140px;
+        }
+        .showResult{
+            display: block;
+            width: 504px;
+            height: 150px;
+            /* border: 1px solid blue; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <div class="subContainer">
+        <div class="img">
+            <img src="images/sale.png" alt="">
+        </div>
+        <div class="sale">
+            <ul>
+                <li>
+                    <label for="originPrice">원래 가격</label>
+                    <input type="text" id="originPrice">원
+                </li>
+                <li>
+                    <label for="saleRate">할인율</label>
+                    <input type="text" id="saleRate">%
+                </li>
+                <li>
+                    <button type="button">할인 가격 계산하기</button>
+                </li>
+            </ul>
+        </div>
+      </div>
+        <div class="showResult"></div>
+    </div>
+    
+    <script>
+        
+        let btn = document.querySelector("button");
+        let result = document.querySelector(".showResult");
+
+        btn.addEventListener("click",() => {
+            let price = document.querySelector("#originPrice").value;
+            let sale = document.querySelector("#saleRate").value;
+            let salePrice = 0;
+            let finalPrice = 0;
+            if(price<0){
+                alert("가격을 다시 입력하세요");
+            }
+            else{
+                salePrice = price * (sale / 100);
+                finalPrice = price - salePrice;
+            }
+            result.innerHTML = "상품의 원래 가격은 "+price+"원이고, 할인율은 "+sale+"%입니다. "+salePrice+"원을 절약한 "+finalPrice+"원에 살 수 있습니다.";
+        })
+    </script>
+</body>
+</html>

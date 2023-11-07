@@ -1,0 +1,54 @@
+.container_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 400px;
+    height: 310px;
+    text-align: center;
+    background-color: #DCE2F0;
+    border-radius: 10px;
+}
+.container p{
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.container p .left,.container p .right{
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.container p .yearMonth_display{
+    font-size: 20px;
+    font-weight: 600;
+    color: #3F73AF;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.container table{
+    margin: auto;
+    width: 380px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #666;
+}
+.container .week{
+    height: 40px;
+}
+.container .week td{
+    width: 54px;
+}
+.container .week .sun{
+    color: red;
+}
+.container .week_display tr{
+    height: 35px;
+}
+.container .week_display tr td:nth-child(1){
+    color: red;
+}
+.today{
+    background-color: blue;
+    color: white;
+}

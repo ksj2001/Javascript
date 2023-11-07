@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연말 디데이 계산</title>
+</head>
+<body>
+    <h2>오늘부터 올해 연말까지 남은 날짜</h2>
+    
+    <script>
+        let today = new Date();
+        let yearEnd = new Date(2024,0,0);
+        let todayTime = today.getTime();
+        let yearEndTime = yearEnd.getTime();
+        let ddayTime = Math.ceil((yearEndTime-todayTime)/86400000);
+        document.write(`D-day: ${ddayTime}일 남았습니다.`)
+    </script>
+</body>
+</html>

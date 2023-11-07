@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event 연습</title>
+</head>
+<body>
+    <button class="btn1">gray</button>
+    <div class="menu">메뉴바</div>
+    <button class="btn2">pink</button>
+
+    <script>
+        let btn1 = document.querySelector(".btn1");
+        let btn2 = document.querySelector(".btn2");
+        let menu = document.querySelector(".menu");
+        btn1.addEventListener("mouseover",changecolor);
+        btn1.onmouseout = () => {menu.style.backgroundColor="transparent";}
+        btn2.onclick = () => {menu.style.backgroundColor="pink";}
+        
+        // 선언적 함수는 hoisting이 일어나는 관계로 사용을 지양하자.
+        // hoisting이란 함수가 만들어지기 전인 최상의 scope로 끌어올려진 상태
+        function changecolor() {
+            menu.style.backgroundColor="gray";
+        }
+    </script>
+</body>
+</html>

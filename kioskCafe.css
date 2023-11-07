@@ -1,0 +1,222 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.modal{
+    visibility: hidden;
+    width: 970px;
+    height: 700px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: 0.5s;
+    opacity: 0;
+}
+.modal.on{
+    opacity: 1;
+    visibility: visible;
+}
+.modal .modal_content{
+    display: flex;
+    align-items: center;
+    width: 400px;
+    height: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    border-radius: 10px;
+}
+.modal_content .photo{
+    width: 180px;
+}
+.modal_content .photo img{
+    width: 180px;
+    height: 180px;
+}
+.modal_content .contents p{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5em;
+}
+.modal_content .contents .btn-close{
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    background-color: #555;
+    cursor: pointer;
+}
+.modal_content .contents .btn-close i{
+    font-size: 18px;
+}
+.container{
+    width: 970px;
+    height: 700px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /* display: none; */
+}
+.orderMenu{
+    float: left;
+    width: 650px;
+    height: 620px;
+    background-color: #28502B;
+}
+.orderMenu p{
+    text-align: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    color: white;
+}
+.orderMenu p span{
+    font-size: 15px;
+}
+.orderMenu .section01{
+    width: 610px;
+    margin: 0 20px 20px 20px;
+}
+.orderMenu .section01 h2{
+    display: inline-block;
+    margin: 0;
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+.orderMenu .section01 .menuBox{
+    width: 100%;
+    height: 510px;
+    background-color: white;
+}
+.menuBox ul{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-flow: row wrap;
+    gap: 10px;
+    padding-top: 45px;
+    margin-left: 20px;
+}
+.menuBox ul li{
+    position: relative;
+    text-align: center;
+    width: 135px;
+    height: 135px;
+    border-radius: 10px;
+    background-color: #F28444;
+    cursor: pointer;
+}
+.menuBox ul li i{
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+    background-position: center 10px;
+    background-repeat: no-repeat;
+    background-size: 60px;
+    background-color: white;
+    border-radius: 50%;
+    margin-top: 15px;
+}
+.menuBox ul li.hot i{
+    background-image: url('images/hot.png');
+}
+.menuBox ul li.ice i{
+    background-image: url('images/ice.png');
+}
+.menuBox ul li span{
+    display: block;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.menuBox ul li strong{
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
+}
+.menuBox ul li em{
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.orderList{
+    float: right;
+    width: 320px;
+    height: 620px;
+    background-color: #152B17;
+    overflow: auto;
+}
+.orderList h2{
+    text-align: right;
+    margin: 0;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+.orderList .section02 div{
+    width: 280px;
+    height: 60px;
+    text-align: right;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid gray;
+    color: white;
+}
+.orderList .section02 button{
+    border: none;
+    font-size: 14px;
+    padding: 3px;
+}
+.orderResult{
+    clear: both;
+    width: 100%;
+    height: 80px;
+    border-top: 1px solid white;
+    background-color: #152B17;  
+    color: white;
+}
+.orderResult .orderResultPosition{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+.orderResult > .orderResultPosition > span{
+    font-size: 20px;
+    color: #666;
+    margin: 0 15px;
+}
+.orderResult button{
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    color: white;
+    background-color: #A66953;
+    border: none;
+    cursor: pointer;
+}

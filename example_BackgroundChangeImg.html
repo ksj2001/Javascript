@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const images = ['pic-1.jpg', 'pic-2.jpg', 'pic-3.jpg', 'pic-4.jpg'];
+        let imgs = document.createElement('img');
+        let ranNum = Math.floor(Math.random()*4+1);
+        imgs.setAttribute('src',`images/pic-${ranNum}.jpg`);
+        console.log(ranNum);
+        document.body.appendChild(imgs);
+    </script>
+</body>
+</html>

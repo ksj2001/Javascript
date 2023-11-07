@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+        <li>List item 4</li>
+        <li>List item 5</li>
+    </ul>
+
+    <img id="image" src="images/pome.png" width="120" height="100">
+    <input type="button" onclick="imgbtn();" value="눌러보세요" />
+    <script>
+        // let list = document.getElementsByTagName('ul')[0];
+        // let allItems = list.getElementsByTagName('li');
+        // let list = document.querySelectorAll("ul > li");
+        // for(let i=0;i<list.length;i++){
+        //     alert(list[i].firstChild.data);
+        // }
+        // data는 li 안의 텍스트를 alert 메세지로 출력한다.
+        // for(let i=0;i<allItems.length;i++){
+        //     alert(allItems[i].firstChild.data);
+        // }
+        let imgbtn = function(){
+            let img = document.querySelector("#image");
+            img.setAttribute('src','images/poodle.png');
+        }
+        
+    </script>
+</body>
+</html>

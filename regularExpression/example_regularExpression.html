@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="example_regularExpression.css">
+</head>
+<body>
+    <h2>회원가입</h2>
+    <form id="form">
+        <div class="line">
+            <label for="id">아이디</label>
+            <input type="text" id="id" placeholder="영어+숫자를 섞어서 4-12자">
+            <button type="button" id="check">유효성검사</button>
+        </div>
+        <div class="line">
+            <label for="id">패스워드</label>
+            <input type="password" id="password" placeholder="영어+특수문자+숫자를 섞어서 4-12자">
+            <button type="button" id="clear">클리어</button>
+        </div>
+        <div class="line">
+            <label for="id">패스워드확인</label>
+            <input type="password" id="passwordCheck" placeholder="영어+특수문자+숫자를 섞어서 4-12자">
+        </div>
+        <div class="line">
+            <label for="id">이메일</label>
+            <input type="email" id="email" placeholder="@">
+        </div>
+        <div class="line">
+            <label for="id">휴대폰</label>
+            <input type="tel" id="tel" placeholder="(-)포함하여 입력">
+        </div>
+    </form>
+    <script>
+        let checkButton = document.querySelector("#check");
+        let clearButton = document.querySelector("#clear");
+        let inputs = document.querySelectorAll(".line input");
+        let text = "";
+        checkButton.addEventListener("click", () => {
+            const idpattern = /^[a-zA-Z0-9]{4,12}$/;
+            const pwpattern = /^\w+([!@#$%^&*]?).{4,12}$/;
+            const emailpattern = /\@/;
+            const telpattern = /^\d{3}-\d{4}-\d{4}$/;
+            if(idpattern.test(inputs[0].value)===false){
+                alert('아이디의 형식을 잘못 입력하셨습니다.');
+            }
+            else{
+                text += `ID:${inputs[0].value}\n`;
+            }
+            if(pwpattern.test(inputs[1].value)===false){
+                alert('비밀번호의 형식을 잘못 입력하셨습니다.');
+            }
+            else if(inputs[1].value!=inputs[2].value){
+                alert('비밀번호를 다시 확인하세요.');
+            }
+            else{
+                text += `PW:${inputs[1].value}\n`;
+            }
+            if(emailpattern.test(inputs[3].value)===false){
+                alert('이메일의 형식을 잘못 입력하셨습니다.')
+            }
+            else{
+                text += `EMAIL:${inputs[3].value}\n`;
+            }
+            if(telpattern.test(inputs[4].value)===false){
+                alert('전화번호의 형식을 잘못 입력하셨습니다.')
+            }
+            else{
+                text += `PHONE:${inputs[4].value}`;
+            }
+            alert(text);
+
+        })
+        clearButton.addEventListener("click", () => {
+            document.querySelector("#form").reset();
+            document.querySelector(".line #id").focus();
+        })
+    </script>
+</body>
+</html>
